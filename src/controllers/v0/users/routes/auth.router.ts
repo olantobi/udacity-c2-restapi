@@ -14,7 +14,7 @@ async function generatePassword(plainTextPassword: string): Promise<string> {
   return await bcrypt.hash(plainTextPassword, saltRounds)
 }
 
-async function comparePasswords(plainTextPassword: string, hash: string): Promise<boolean> {
+async function comparePasswords(plainTextPassword: string, hash: string): Promise<boolean> {  
   return await bcrypt.compare(plainTextPassword, hash);
 }
 
@@ -58,7 +58,7 @@ router.post('/login', async(req: Request, res: Response) => {
     return res.status(400).send({ auth: false, message: 'Password is not valid' });
   }
 
-  const user = await User.findByPk(email);
+  const user = await User.findByPk(email, { attributes: {include: ['password_hash'] } });
   // Check that user exists
   if(!user) {
     return res.status(401).send({ auth: false, message: 'Unauthorized user'});

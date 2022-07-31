@@ -4,7 +4,7 @@ import { UserRouter } from './users/routes/user.router';
 
 const router: Router = Router();
 
-router.use('/feeds', FeedItemRouter);
+router.use('/feed', FeedItemRouter);
 router.use('/users', UserRouter);
 
 router.use('/', (req: Request, res: Response) => res.send('v0'));
