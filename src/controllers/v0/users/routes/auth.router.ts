@@ -92,7 +92,7 @@ router.post('/', async (req: Request, res: Response) => {
   }
 
   // find the user
-  const user = await User.findByPk(email, {attributes: {exclude: ['password_hash']}});
+  const user = await User.findByPk(email);
   // check that user doesnt exists
   if(user) {
       return res.status(409).send({ auth: false, message: 'User may already exist' });
@@ -103,7 +103,7 @@ router.post('/', async (req: Request, res: Response) => {
   const savedUser = await User.create({
       email: email,
       password_hash: password_hash
-  }, { include: ['email'] });
+  });
 
   // Generate JWT
   const jwt = generateJWT(savedUser);

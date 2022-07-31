@@ -5,7 +5,9 @@ interface UserAttributes {
   password_hash: string
 }
 
-@Table
+@Table({
+  defaultScope: { attributes: { exclude: ['password_hash']}}
+})
 export class User extends Model<UserAttributes> {
   
   @PrimaryKey
@@ -13,7 +15,7 @@ export class User extends Model<UserAttributes> {
   public email!: string;
 
   @Column
-  public password_hash!: string; // for nullable fields
+  public password_hash!: string;
 
   @Column
   @CreatedAt

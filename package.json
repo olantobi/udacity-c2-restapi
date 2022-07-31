@@ -4,7 +4,7 @@
   "main": "server.js",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js",
+    "start": "tsc && node ./www/server.js",
     "tsc": "tsc",
     "dev": "ts-node-dev ./src/server.ts",
     "prod": "tsc && node ./www/server.js",

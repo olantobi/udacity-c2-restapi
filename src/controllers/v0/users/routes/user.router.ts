@@ -8,13 +8,13 @@ const router: Router = Router();
 router.use('/auth', AuthRouter);
 
 router.get('/', requireAuth, async (req: Request, res: Response) => {
-    const users = await User.findAll({ attributes: { exclude: ['password_hash'] } });
+    const users = await User.findAll();
     res.send(users);
 });
 
 router.get('/:id', requireAuth, async (req: Request, res: Response) => {
     let { id } = req.params;
-    const item = await User.findByPk(id, { attributes: { exclude: ['password_hash'] } });
+    const item = await User.findByPk(id);
     res.send(item);
 });
 
