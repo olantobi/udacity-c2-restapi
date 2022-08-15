@@ -6,7 +6,7 @@ import { V0MODELS } from './controllers/v0/model.index';
 import { sequelize } from './sequelize';
 
 const app = express();
-const PORT = 9000;
+const PORT = process.env.PORT || 9000;
 
 sequelize.addModels(V0MODELS);
 sequelize.sync().then(() => console.log('connected to database'));
