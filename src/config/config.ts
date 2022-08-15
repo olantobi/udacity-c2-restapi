@@ -9,6 +9,16 @@ export const config = {
     "aws_profile": "default",
     "aws_media_bucket": "udagram-tobi-dev"
   },
+  "local": {
+    "username": "postgres",
+    "password": "postgres",
+    "database": "udagramtobidev",
+    "host": "localhost",    
+    "dialect": "postgres",
+    "aws_region": "us-east-1",
+    "aws_profile": "udagram",
+    "aws_media_bucket": "udagram-tobi-dev"
+  },
   "jwt": {
     "secret": "2owUuvVMrm1aaFxQvYnNRTpYfL1sLAbi"
   },
